@@ -7,16 +7,16 @@ import { ChartConfiguration } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
-    selector: 'app-reports',
-    standalone: true,
-    imports: [
-        CommonModule,
-        MatCardModule,
-        MatButtonModule,
-        MatSelectModule,
-        BaseChartDirective
-    ],
-    template: `
+  selector: 'app-reports',
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatButtonModule,
+    MatSelectModule,
+    BaseChartDirective
+  ],
+  template: `
     <div class="reports-container">
       <mat-card class="chart-card">
         <mat-card-header>
@@ -52,16 +52,16 @@ import { BaseChartDirective } from 'ng2-charts';
           <div class="summary-grid">
             <div class="summary-item">
               <h3>Total Revenue (YTD)</h3>
-              <p class="amount">₦{{ totalRevenue | number:'1.2-2' }}</p>
+              <p class="amount">{{ totalRevenue | number:'1.2-2' }} FCFA</p>
             </div>
             <div class="summary-item">
               <h3>Total Expenses (YTD)</h3>
-              <p class="amount">₦{{ totalExpenses | number:'1.2-2' }}</p>
+              <p class="amount">{{ totalExpenses | number:'1.2-2' }} FCFA</p>
             </div>
             <div class="summary-item">
               <h3>Net Profit/Loss (YTD)</h3>
               <p class="amount" [ngClass]="{'profit': netProfit > 0, 'loss': netProfit < 0}">
-                ₦{{ netProfit | number:'1.2-2' }}
+                {{ netProfit | number:'1.2-2' }} FCFA
               </p>
             </div>
             <div class="summary-item">
@@ -73,7 +73,7 @@ import { BaseChartDirective } from 'ng2-charts';
       </mat-card>
     </div>
   `,
-    styles: [`
+  styles: [`
     .reports-container {
       padding: 20px;
       max-width: 1200px;
@@ -129,50 +129,50 @@ import { BaseChartDirective } from 'ng2-charts';
   `]
 })
 export class ReportsComponent implements OnInit {
-    totalRevenue: number = 750000;
-    totalExpenses: number = 500000;
-    netProfit: number = this.totalRevenue - this.totalExpenses;
-    profitMargin: number = (this.netProfit / this.totalRevenue) * 100;
+  totalRevenue: number = 750000;
+  totalExpenses: number = 500000;
+  netProfit: number = this.totalRevenue - this.totalExpenses;
+  profitMargin: number = (this.netProfit / this.totalRevenue) * 100;
 
-    revenueExpensesData: ChartConfiguration<'bar'>['data'] = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-        datasets: [
-            {
-                label: 'Revenue',
-                data: [65000, 70000, 80000, 85000, 90000, 95000],
-                backgroundColor: '#4caf50'
-            },
-            {
-                label: 'Expenses',
-                data: [45000, 48000, 52000, 55000, 58000, 60000],
-                backgroundColor: '#f44336'
-            }
-        ]
-    };
+  revenueExpensesData: ChartConfiguration<'bar'>['data'] = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    datasets: [
+      {
+        label: 'Revenue',
+        data: [65000, 70000, 80000, 85000, 90000, 95000],
+        backgroundColor: '#4caf50'
+      },
+      {
+        label: 'Expenses',
+        data: [45000, 48000, 52000, 55000, 58000, 60000],
+        backgroundColor: '#f44336'
+      }
+    ]
+  };
 
-    profitTrendData: ChartConfiguration<'line'>['data'] = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-        datasets: [
-            {
-                label: 'Net Profit/Loss',
-                data: [20000, 22000, 28000, 30000, 32000, 35000],
-                borderColor: '#2196f3',
-                tension: 0.1
-            }
-        ]
-    };
+  profitTrendData: ChartConfiguration<'line'>['data'] = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    datasets: [
+      {
+        label: 'Net Profit/Loss',
+        data: [20000, 22000, 28000, 30000, 32000, 35000],
+        borderColor: '#2196f3',
+        tension: 0.1
+      }
+    ]
+  };
 
-    chartOptions: ChartConfiguration<'bar'>['options'] = {
-        responsive: true,
-        maintainAspectRatio: false
-    };
+  chartOptions: ChartConfiguration<'bar'>['options'] = {
+    responsive: true,
+    maintainAspectRatio: false
+  };
 
-    lineChartOptions: ChartConfiguration<'line'>['options'] = {
-        responsive: true,
-        maintainAspectRatio: false
-    };
+  lineChartOptions: ChartConfiguration<'line'>['options'] = {
+    responsive: true,
+    maintainAspectRatio: false
+  };
 
-    ngOnInit() {
-        // TODO: Fetch real data from service
-    }
+  ngOnInit() {
+    // TODO: Fetch real data from service
+  }
 } 

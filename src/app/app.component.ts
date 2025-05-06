@@ -75,7 +75,98 @@ import { RouterModule } from '@angular/router';
         </div>
       </div>
     </div>
-  `
+  `,
+  styles: [`
+    .app-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    .app-header {
+      background-color: #3f51b5;
+      color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 60px;
+    }
+    
+    .logo h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .main-nav li {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .main-nav a {
+      color: white;
+      text-decoration: none;
+      padding: 20px 15px;
+      display: block;
+      transition: background-color 0.3s;
+    }
+    
+    .main-nav a:hover, .main-nav a.active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .app-main {
+      flex: 1;
+      background-color: #f5f5f5;
+    }
+    
+    .app-footer {
+      background-color: #3f51b5;
+      color: white;
+      padding: 20px 0;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+      }
+      
+      .main-nav {
+        margin-top: 10px;
+      }
+      
+      .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .main-nav a {
+        padding: 10px;
+      }
+    }
+  `]
 })
 export class AppComponent {
   title = 'Business Tracker';
